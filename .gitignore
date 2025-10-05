@@ -1,0 +1,10 @@
+/*
+!/backend/
+!/README.md
+!/requirements.txt
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+.DS_Store
+.vscode/
+.idea/
