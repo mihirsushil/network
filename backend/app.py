@@ -1,5 +1,5 @@
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from discovery import get_devices
 from analyzer import get_activity
 
@@ -15,7 +15,9 @@ def home():
 
 @app.route('/discovery')  # defines a new route (URL)
 def discovery():
-    return jsonify(get_devices())  # runs the function and sends back JSON data
+    ip = request.args.get('ip', '192.168.40.0/4')
+    
+    return jsonify(get_devices(ip))  # runs the function and sends back JSON data
 
 # route for activity
 @app.route('/activity')
