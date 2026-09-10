@@ -38,6 +38,18 @@ npm install
 npm start                         # http://localhost:3001 (PORT=3001)
 ```
 
+### Or with Docker Compose
+
+```bash
+docker compose up --build
+# backend  → http://localhost:5000
+# frontend → http://localhost:3001
+```
+
+Raw sockets need `NET_RAW`/`NET_ADMIN`, granted to the backend container in
+`docker-compose.yml`; without host-level access to the physical interface
+(e.g. Docker Desktop on macOS) it still runs fine on the mock-data fallback.
+
 Raw sockets (ARP scan, live packet capture) need root on macOS/Linux.
 Running unprivileged is fully supported — both `discovery.py` and
 `analyzer.py` fall back to synthetic mock data instead of failing, so the
