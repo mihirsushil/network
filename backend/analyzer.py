@@ -11,6 +11,7 @@ High ICMP counts in a server network are a proxy for error traffic and
 can indicate hardware faults or firmware instability on storage devices.
 """
 
+import os
 import random
 import time
 
@@ -26,7 +27,9 @@ ICMP_ALERT_THRESHOLD = 0.15   # >15 % ICMP → possible network instability
 # capture publishes and returns immediately instead of blocking on analysis.
 STREAM_KEY = "packets:raw"
 
-_redis = redis.Redis(host="127.0.0.1", port=6379, decode_responses=True)
+# REDIS_HOST lets docker-compose point this at the `redis` service hostname
+# instead of localhost, without touching anything for local (non-container) dev.
+_redis = redis.Redis(host=os.environ.get("REDIS_HOST", "127.0.0.1"), port=6379, decode_responses=True)
 
 
 def _protocol_of(packet) -> str:
