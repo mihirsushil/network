@@ -1,10 +1,10 @@
-/*
-!/backend/
-!/README.md
-!/requirements.txt
+node_modules/
+build/
 backend/venv/
 backend/__pycache__/
 backend/**/*.pyc
+c-modules/sniffer
 .DS_Store
 .vscode/
 .idea/
+"root /"
